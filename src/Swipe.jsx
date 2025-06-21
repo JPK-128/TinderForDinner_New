@@ -5,18 +5,24 @@ import TinderCard from 'react-tinder-card';
 const sampleRecipes = [
   {
     id: 1,
-    name: 'Spaghetti Bolognese',
-    img: 'https://via.placeholder.com/400x300?text=Spaghetti',
+    name: 'Classic Pizza',
+    description: 'Tomato, mozzarella and fresh basil',
+    img:
+      'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=60',
   },
   {
     id: 2,
-    name: 'Vegetarian Curry',
-    img: 'https://via.placeholder.com/400x300?text=Curry',
+    name: 'Sushi Platter',
+    description: 'Assorted fresh sushi rolls',
+    img:
+      'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=400&q=60',
   },
   {
     id: 3,
-    name: 'Pancakes',
-    img: 'https://via.placeholder.com/400x300?text=Pancakes',
+    name: 'Veggie Burger',
+    description: 'Grilled veggies with avocado',
+    img:
+      'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=60',
   },
 ];
 
@@ -32,22 +38,22 @@ export default function Swipe() {
 
   return (
     <div className="flex justify-center items-center h-full p-4">
-      <div className="w-80 h-96">
+      <div className="relative w-80 h-96">
         {recipes.map((recipe) => (
           <TinderCard
-            className="absolute"
+            className="absolute inset-0"
             key={recipe.id}
             onSwipe={(dir) => handleSwipe(dir, recipe)}
           >
-            <div
-              className="bg-white h-96 rounded shadow-lg flex flex-col justify-end"
-              style={{
-                backgroundImage: `url(${recipe.img})`,
-                backgroundSize: 'cover',
-              }}
-            >
-              <div className="bg-black bg-opacity-60 text-white p-2">
-                {recipe.name}
+            <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
+              <img
+                src={recipe.img}
+                alt={recipe.name}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                <h3 className="text-xl font-bold">{recipe.name}</h3>
+                <p className="text-sm">{recipe.description}</p>
               </div>
             </div>
           </TinderCard>
