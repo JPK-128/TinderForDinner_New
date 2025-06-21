@@ -15,4 +15,18 @@ It uses React with Vite and Tailwind CSS.
    ```
 3. Open <http://localhost:5173> in your browser.
 
+## Building for Production
+
+After installing dependencies you can create a production build:
+
+```bash
+npm run build
+```
+
+To preview the built version locally run:
+
+```bash
+npm run preview
+```
+
 The demo shows a simple swipe interface with placeholder recipes.
