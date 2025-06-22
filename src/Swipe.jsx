@@ -7,18 +7,27 @@ export default function Swipe() {
   const navigate = useNavigate();
   const { recipes } = useContext(RecipeContext);
   const [sessionRecipes, setSessionRecipes] = useState(recipes);
+  const [liked, setLiked] = useState([]);
 
   useEffect(() => {
     setSessionRecipes(recipes);
+    setLiked([]);
   }, [recipes]);
 
   const handleSwipe = (dir, recipe) => {
+    const remaining = sessionRecipes.filter((r) => r.id !== recipe.id);
     if (dir === 'right') {
-      navigate('/match', { state: { recipe } });
+      const newLiked = [...liked, recipe];
+      setLiked(newLiked);
+      if (remaining.length === 0) {
+        navigate('/rate', { state: { likedRecipes: newLiked } });
+      }
+    } else if (dir === 'left') {
+      if (remaining.length === 0) {
+        navigate('/rate', { state: { likedRecipes: liked } });
+      }
     }
-    if (dir === 'left' || dir === 'right') {
-      setSessionRecipes((prev) => prev.filter((r) => r.id !== recipe.id));
-    }
+    setSessionRecipes(remaining);
   };
 
   return (

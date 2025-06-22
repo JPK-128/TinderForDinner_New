@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import Swipe from './Swipe';
 import Match from './Match';
+import RateLikes from './RateLikes';
 import AddRecipe from './AddRecipe';
 import Multiplayer from './Multiplayer';
 import { RecipeProvider } from './RecipeContext';
@@ -22,6 +23,7 @@ export default function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/swipe" element={<Swipe />} />
+          <Route path="/rate" element={<RateLikes />} />
           <Route path="/match" element={<Match />} />
           <Route path="/add" element={<AddRecipe />} />
           <Route path="/multiplayer" element={<Multiplayer />} />
