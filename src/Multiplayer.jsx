@@ -8,15 +8,23 @@ export default function Multiplayer() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [socket, setSocket] = useState(null);
+  const [creating, setCreating] = useState(false);
+  const [error, setError] = useState('');
 
   const createSession = async () => {
+    setCreating(true);
+    setError('');
     try {
       const res = await fetch('http://localhost:3000/create');
+      if (!res.ok) throw new Error('Server error');
       const data = await res.json();
       setGeneratedCode(data.code);
       joinSession(data.code);
     } catch (err) {
       console.error(err);
+      setError('Failed to create session. Make sure the server is running.');
+    } finally {
+      setCreating(false);
     }
   };
 
@@ -24,6 +32,9 @@ export default function Multiplayer() {
     const ws = new WebSocket(`ws://localhost:3000?code=${sessionCode}`);
     ws.onmessage = (e) => setMessages((prev) => [...prev, e.data]);
     ws.onopen = () => setJoined(true);
+    ws.onerror = () => {
+      setError('Connection failed. Make sure the server is running.');
+    };
     setSocket(ws);
   };
 
@@ -48,9 +59,12 @@ export default function Multiplayer() {
           <button
             onClick={createSession}
             className="bg-pink-500 text-white px-4 py-2 rounded"
+
+            disabled={creating}
           >
-            Create Session
+            {creating ? 'Creating...' : 'Create Session'}
           </button>
+          {error && <p className="text-red-500">{error}</p>}
           {generatedCode && (
             <p className="mt-2">
               Share this code: <span className="font-mono">{generatedCode}</span>
