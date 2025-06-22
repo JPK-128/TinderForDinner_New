@@ -40,7 +40,7 @@ export default function RateLikes() {
       <h2 className="text-xl font-bold mb-4 text-center">
         Rank your liked recipes by dragging them
       </h2>
-      <div className="flex space-x-4 overflow-x-auto">
+      <div className="flex justify-center space-x-4 overflow-x-auto">
         {ordered.map((recipe, index) => (
           <div
             key={recipe.id}
