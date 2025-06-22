@@ -31,3 +31,14 @@ npm run preview
 
 The demo shows a simple swipe interface with placeholder recipes. Example images
 are inlined directly in the code using data URI strings.
+
+## Multiplayer Server
+
+A simple Node WebSocket server is included for experimental multiplayer sessions.
+Start it alongside the Vite dev server:
+
+```bash
+npm run server
+```
+
+The client will connect to `ws://localhost:3000` when creating or joining a session.
