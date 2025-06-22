@@ -28,11 +28,14 @@ const sampleRecipes = [
 
 export default function Swipe() {
   const navigate = useNavigate();
-  const [recipes] = useState(sampleRecipes);
+  const [recipes, setRecipes] = useState(sampleRecipes);
 
   const handleSwipe = (dir, recipe) => {
     if (dir === 'right') {
       navigate('/match', { state: { recipe } });
+    }
+    if (dir === 'left' || dir === 'right') {
+      setRecipes((prev) => prev.filter((r) => r.id !== recipe.id));
     }
   };
 
@@ -44,6 +47,8 @@ export default function Swipe() {
             className="absolute inset-0"
             key={recipe.id}
             onSwipe={(dir) => handleSwipe(dir, recipe)}
+            swipeRequirementType="position"
+            swipeThreshold={100}
           >
             <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
               <img
