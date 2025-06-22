@@ -9,7 +9,7 @@ It uses React with Vite and Tailwind CSS.
    ```
    npm install
    ```
-2. Start the dev server:
+2. Start the dev server (this will also launch the WebSocket server):
    ```
    npm run dev
    ```
@@ -35,7 +35,8 @@ are inlined directly in the code using data URI strings.
 ## Multiplayer Server
 
 A simple Node WebSocket server is included for experimental multiplayer sessions.
-Start it alongside the Vite dev server:
+The WebSocket server starts automatically when running `npm run dev`. You can
+also launch it separately if needed:
 
 ```bash
 npm run server
