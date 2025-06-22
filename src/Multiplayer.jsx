@@ -59,6 +59,7 @@ export default function Multiplayer() {
           <button
             onClick={createSession}
             className="bg-pink-500 text-white px-4 py-2 rounded"
+
             disabled={creating}
           >
             {creating ? 'Creating...' : 'Create Session'}

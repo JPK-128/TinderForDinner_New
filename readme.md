@@ -46,3 +46,4 @@ The client will connect to `ws://localhost:3000` when creating or joining a sess
 Open the multiplayer page in one browser and click **Create Session**. A six digit
 code will appear and the page will automatically join that session. In another
 browser or device, open the same page and enter that code to join.
+
