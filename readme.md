@@ -29,4 +29,5 @@ To preview the built version locally run:
 npm run preview
 ```
 
-The demo shows a simple swipe interface with placeholder recipes.
+The demo shows a simple swipe interface with placeholder recipes. Example images
+are inlined directly in the code using data URI strings.
