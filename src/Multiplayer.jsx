@@ -172,8 +172,14 @@ export default function Multiplayer() {
           <div className="phone-notch" />
           <div className="phone-screen relative">
             {feedback && (
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 text-white font-bold text-xl drop-shadow">
-                {feedback}
+              <div
+                className={`absolute inset-0 flex items-center justify-center z-20 pointer-events-none ${
+                  feedback === 'Liked!' ? 'bg-green-600/70' : 'bg-red-600/70'
+                }`}
+              >
+                <span className="text-white text-4xl font-bold drop-shadow-lg">
+                  {feedback}
+                </span>
               </div>
             )}
             {sessionRecipes.map((recipe) => (
