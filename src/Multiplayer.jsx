@@ -186,8 +186,8 @@ export default function Multiplayer() {
               key={recipe.id}
               onSwipe={(dir) => handleSwipe(dir, recipe)}
               preventSwipe={["up", "down"]}
-              swipeRequirementType="velocity"
-              swipeThreshold={0.3}
+              swipeRequirementType="position"
+              swipeThreshold={100}
             >
               <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
                 <img
