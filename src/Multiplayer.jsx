@@ -164,29 +164,33 @@ export default function Multiplayer() {
     content = <p>Waiting for the other player...</p>;
   } else {
     content = (
-      <div className="flex justify-center items-center h-full p-4">
-        <div className="relative w-80 h-96">
-          {sessionRecipes.map((recipe) => (
-            <TinderCard
-              className="absolute inset-0"
-              key={recipe.id}
-              onSwipe={(dir) => handleSwipe(dir, recipe)}
-              swipeRequirementType="position"
-              swipeThreshold={100}
-            >
-              <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={recipe.img}
-                  alt={recipe.name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
-                  <h3 className="text-xl font-bold">{recipe.name}</h3>
-                  <p className="text-sm">{recipe.description}</p>
+      <div className="flex justify-center p-4">
+        <div className="phone-frame">
+          <div className="phone-notch" />
+          <div className="phone-screen">
+            {sessionRecipes.map((recipe) => (
+              <TinderCard
+                className="absolute inset-0"
+                key={recipe.id}
+                onSwipe={(dir) => handleSwipe(dir, recipe)}
+                preventSwipe={["up", "down"]}
+                swipeRequirementType="velocity"
+                swipeThreshold={0.3}
+              >
+                <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src={recipe.img}
+                    alt={recipe.name}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                    <h3 className="text-xl font-bold">{recipe.name}</h3>
+                    <p className="text-sm">{recipe.description}</p>
+                  </div>
                 </div>
-              </div>
-            </TinderCard>
-          ))}
+              </TinderCard>
+            ))}
+          </div>
         </div>
       </div>
     );
