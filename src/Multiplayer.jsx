@@ -167,44 +167,41 @@ export default function Multiplayer() {
     content = <p>Waiting for the other player...</p>;
   } else {
     content = (
-      <div className="flex justify-center p-4">
-        <div className="phone-frame">
-          <div className="phone-notch" />
-          <div className="phone-screen relative">
-            {feedback && (
-              <div
-                className={`absolute inset-0 flex items-center justify-center z-20 pointer-events-none ${
-                  feedback === 'Liked!' ? 'bg-green-600/70' : 'bg-red-600/70'
-                }`}
-              >
-                <span className="text-white text-4xl font-bold drop-shadow-lg">
-                  {feedback}
-                </span>
-              </div>
-            )}
-            {sessionRecipes.map((recipe) => (
-              <TinderCard
-                className="absolute inset-0"
-                key={recipe.id}
-                onSwipe={(dir) => handleSwipe(dir, recipe)}
-                preventSwipe={["up", "down"]}
-                swipeRequirementType="velocity"
-                swipeThreshold={0.3}
-              >
-                <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
-                  <img
-                    src={recipe.img}
-                    alt={recipe.name}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
-                    <h3 className="text-xl font-bold">{recipe.name}</h3>
-                    <p className="text-sm">{recipe.description}</p>
-                  </div>
+      <div className="flex justify-center items-center h-full p-4">
+        <div className="relative w-80 h-96">
+          {feedback && (
+            <div
+              className={`absolute inset-0 flex items-center justify-center z-20 pointer-events-none ${
+                feedback === 'Liked!' ? 'bg-green-600/70' : 'bg-red-600/70'
+              }`}
+            >
+              <span className="text-white text-4xl font-bold drop-shadow-lg">
+                {feedback}
+              </span>
+            </div>
+          )}
+          {sessionRecipes.map((recipe) => (
+            <TinderCard
+              className="absolute inset-0"
+              key={recipe.id}
+              onSwipe={(dir) => handleSwipe(dir, recipe)}
+              preventSwipe={["up", "down"]}
+              swipeRequirementType="velocity"
+              swipeThreshold={0.3}
+            >
+              <div className="relative w-full h-full rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={recipe.img}
+                  alt={recipe.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent text-white p-4">
+                  <h3 className="text-xl font-bold">{recipe.name}</h3>
+                  <p className="text-sm">{recipe.description}</p>
                 </div>
-              </TinderCard>
-            ))}
-          </div>
+              </div>
+            </TinderCard>
+          ))}
         </div>
       </div>
     );
