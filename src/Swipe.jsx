@@ -8,6 +8,7 @@ export default function Swipe() {
   const { recipes } = useContext(RecipeContext);
   const [sessionRecipes, setSessionRecipes] = useState(recipes);
   const [liked, setLiked] = useState([]);
+  const [feedback, setFeedback] = useState('');
 
   useEffect(() => {
     setSessionRecipes(recipes);
@@ -16,6 +17,8 @@ export default function Swipe() {
 
   const handleSwipe = (dir, recipe) => {
     const remaining = sessionRecipes.filter((r) => r.id !== recipe.id);
+    setFeedback(dir === 'right' ? 'Liked!' : 'Disliked!');
+    setTimeout(() => setFeedback(''), 800);
     if (dir === 'right') {
       const newLiked = [...liked, recipe];
       setLiked(newLiked);
@@ -33,11 +36,23 @@ export default function Swipe() {
   return (
     <div className="flex justify-center items-center h-full p-4">
       <div className="relative w-80 h-96">
+        {feedback && (
+          <div
+            className={`absolute inset-0 flex items-center justify-center z-20 pointer-events-none ${
+              feedback === 'Liked!' ? 'bg-green-600/70' : 'bg-red-600/70'
+            }`}
+          >
+            <span className="text-white text-4xl font-bold drop-shadow-lg">
+              {feedback}
+            </span>
+          </div>
+        )}
         {sessionRecipes.map((recipe) => (
           <TinderCard
             className="absolute inset-0"
             key={recipe.id}
             onSwipe={(dir) => handleSwipe(dir, recipe)}
+            preventSwipe={["up", "down"]}
             swipeRequirementType="position"
             swipeThreshold={100}
           >
