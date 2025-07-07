@@ -64,7 +64,7 @@ export default function RateLikes() {
         <Link
           to="/"
           state={{ rankedRecipes: ordered }}
-          className="bg-red-500 text-white px-4 py-2 rounded"
+          className="bg-amber-500 text-white px-4 py-2 rounded"
         >
           Finish
         </Link>
