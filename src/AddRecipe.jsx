@@ -46,7 +46,7 @@ export default function AddRecipe() {
             required
           />
         </div>
-        <button type="submit" className="bg-pink-500 text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-amber-500 text-white px-4 py-2 rounded">
           Add
         </button>
       </form>

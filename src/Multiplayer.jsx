@@ -115,7 +115,7 @@ export default function Multiplayer() {
       <div className="space-y-4">
         <button
           onClick={createSession}
-          className="bg-pink-500 text-white px-4 py-2 rounded"
+          className="bg-amber-500 text-white px-4 py-2 rounded"
           disabled={creating}
         >
           {creating ? 'Creating...' : 'Create Session'}
@@ -135,7 +135,7 @@ export default function Multiplayer() {
           />
           <button
             onClick={handleJoin}
-            className="bg-pink-500 text-white px-4 py-2 rounded ml-2"
+            className="bg-amber-500 text-white px-4 py-2 rounded ml-2"
           >
             Join
           </button>
