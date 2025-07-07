@@ -19,6 +19,7 @@ export default function Multiplayer() {
   const [localDone, setLocalDone] = useState(false);
   const [remoteLikes, setRemoteLikes] = useState(null);
   const [matches, setMatches] = useState(null);
+  const [feedback, setFeedback] = useState('');
 
   useEffect(() => {
     if (joined) {
@@ -82,6 +83,8 @@ export default function Multiplayer() {
 
   const handleSwipe = (dir, recipe) => {
     const remaining = sessionRecipes.filter((r) => r.id !== recipe.id);
+    setFeedback(dir === 'right' ? 'Liked!' : 'Disliked!');
+    setTimeout(() => setFeedback(''), 800);
     if (dir === 'right') {
       const newLiked = [...liked, recipe];
       setLiked(newLiked);
@@ -167,7 +170,12 @@ export default function Multiplayer() {
       <div className="flex justify-center p-4">
         <div className="phone-frame">
           <div className="phone-notch" />
-          <div className="phone-screen">
+          <div className="phone-screen relative">
+            {feedback && (
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 text-white font-bold text-xl drop-shadow">
+                {feedback}
+              </div>
+            )}
             {sessionRecipes.map((recipe) => (
               <TinderCard
                 className="absolute inset-0"
