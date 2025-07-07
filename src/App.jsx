@@ -10,7 +10,7 @@ export default function App() {
   return (
     <RecipeProvider>
       <div className="min-h-screen flex flex-col">
-      <header className="p-4 bg-pink-500 text-white text-center">
+      <header className="p-4 bg-red-500 text-white text-center">
         <h1 className="text-2xl font-bold">Tinder for Dinner</h1>
         <nav className="mt-2">
           <Link className="underline mr-4" to="/">Home</Link>
@@ -41,13 +41,13 @@ function Home() {
       <div className="space-x-4">
         <Link
           to="/swipe"
-          className="bg-pink-500 text-white px-4 py-2 rounded inline-block"
+          className="bg-red-500 text-white px-4 py-2 rounded inline-block"
         >
           Swipe Solo
         </Link>
         <Link
           to="/multiplayer"
-          className="bg-pink-500 text-white px-4 py-2 rounded inline-block"
+          className="bg-red-500 text-white px-4 py-2 rounded inline-block"
         >
           Multiplayer
         </Link>

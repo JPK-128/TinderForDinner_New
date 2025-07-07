@@ -21,7 +21,7 @@ export default function Match() {
       <img src={recipe.img} alt={recipe.name} className="mx-auto mb-4" />
       <p className="mb-1 font-semibold">{recipe.name}</p>
       {recipe.description && <p className="mb-4 text-sm">{recipe.description}</p>}
-      <Link className="bg-pink-500 text-white px-4 py-2 rounded" to="/swipe">
+      <Link className="bg-red-500 text-white px-4 py-2 rounded" to="/swipe">
         Keep Swiping
       </Link>
     </div>
